@@ -1,0 +1,15 @@
+pre-commit:
+  commands:
+    check:
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: |
+        bunx @biomejs/biome check --no-errors-on-unmatched --files-ignore-unknown=true --colors=off . 
+        bun run next:lint
+      exclude: ["./vscode", "public"]
+pre-push:
+  commands:
+    check:
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: |
+        bunx @biomejs/biome check --no-errors-on-unmatched --files-ignore-unknown=true --colors=off .
+        bun run next:lint
